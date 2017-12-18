@@ -4,6 +4,7 @@ const hash = require('hash-sum')
 const DISPOSED = 'disposed'
 const INJECT_STYLE_FN = 'injectStyle'
 const CSS_MODULES = 'cssModules'
+const NAME = require('../package.json').name
 
 function _s (any) {
   return JSON.stringify(any)
@@ -30,7 +31,7 @@ module.exports = function assemble (source, filename, config) {
     shortFilePath: filename,
     require: {
       vueHotReloadAPI: 'vue-hot-reload-api',
-      normalizeComponent: 'vue-component-compiler/src/runtime/normalize-component'
+      normalizeComponent: NAME+'/src/runtime/normalize-component'
     },
     scopeId: null,
     moduleIdentifier: null,
