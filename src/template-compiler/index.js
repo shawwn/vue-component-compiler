@@ -69,9 +69,13 @@ module.exports = function compileTemplate (template, filename, config) {
         '\nif (module.hot) {\n' +
         '  module.hot.accept()\n' +
         '  if (module.hot.data) {\n' +
-        `     require(${JSON.stringify(vueHotReloadAPI)}).rerender(${JSON.stringify(options.scopeId)}, module.exports)\n` +
+        `     require(${JSON.stringify(
+          vueHotReloadAPI
+        )}).rerender(${JSON.stringify(options.scopeId)}, ${
+          config.esModule === true ? 'module.exports.default' : 'module.exports'
+        })\n` +
         '  }\n' +
-        '}'
+        '}';
     }
   }
 
